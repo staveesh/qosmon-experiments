@@ -6,7 +6,7 @@ from math import gcd
 import datetime
 import matplotlib.pyplot as plt
 
-TAG = 'exp_edf'
+TAG = 'exp_dosd'
 analysis_dir = TAG + "_analysis"
 metrics_dir = TAG + '_job_metrics'
 

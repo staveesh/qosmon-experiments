@@ -9,7 +9,7 @@ JOB_TYPES = ["ping", "dns_lookup", "traceroute", "http", "tcp_speed_test"]
 TARGET_SERVERS = ["www.google.com", "www.facebook.com", "www.youtube.com", "www.example.com",
                   "www.wikipedia.org", "www.yahoo.com", "www.twitter.com", "www.instagram.com"]
 NUM_JOBS = 20
-TAG = 'exp_edf'
+TAG = 'exp_dosd'
 EXP_START_TIME = datetime.datetime.utcnow()
 START_TIME_INTERVAL = (1, 5)
 END_TIME = datetime.datetime.utcnow() + datetime.timedelta(hours=2)
@@ -80,4 +80,4 @@ def repeat_with_data(data_dir):
             write_request_to_file(md['key'], schedule_request)
 
 
-repeat_with_data('exp_rr')
+repeat_with_data('exp_edf')

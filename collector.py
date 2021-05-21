@@ -8,7 +8,7 @@ db = client.qosmon
 collection = db.job_metrics
 
 ids = []
-TAG = "exp_edf_job_metrics"
+TAG = "exp_dosd_job_metrics"
 if not os.path.isdir(TAG):
     os.mkdir(TAG)
 os.chdir(TAG)
