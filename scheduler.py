@@ -6,10 +6,10 @@ import os
 import dateutil.parser
 
 JOB_TYPES = ["ping", "dns_lookup", "traceroute", "http", "tcp_speed_test"]
-TARGET_SERVERS = ["www.google.com", "www.facebook.com", "www.youtube.com", "www.example.com",
-                  "www.wikipedia.org", "www.yahoo.com", "www.twitter.com", "www.instagram.com"]
+TARGET_SERVERS = ["www.google.com", "www.youtube.com", "www.tmall.com",
+                  "www.baidu.com", "www.qq.com", "www.sohu.com", "www.facebook.com", "www.taobao.com"]
 NUM_JOBS = 20
-TAG = 'exp_dosd'
+TAG = 'exp_rr'
 EXP_START_TIME = datetime.datetime.utcnow()
 START_TIME_INTERVAL = (1, 5)
 END_TIME = datetime.datetime.utcnow() + datetime.timedelta(hours=2)
@@ -80,4 +80,4 @@ def repeat_with_data(data_dir):
             write_request_to_file(md['key'], schedule_request)
 
 
-repeat_with_data('exp_edf')
+schedule()
