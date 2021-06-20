@@ -6,7 +6,7 @@ from math import gcd
 import datetime
 import matplotlib.pyplot as plt
 
-TAG = 'exp_dosd'
+TAG = 'exp_aosd'
 analysis_dir = TAG + "_analysis"
 metrics_dir = TAG + '_job_metrics'
 
@@ -186,6 +186,7 @@ def find_waiting_times():
             busy_times[job_metrics_dict[job_file_name]['nodeId']] = 0
         busy_times[job_metrics_dict[job_file_name]['nodeId']] += job_metrics_dict[job_file_name]['executionTime']
     average_waiting_times = {}
+    print(waiting_times)
     for job_key, wts in waiting_times.items():
         job_number = int(job_key.split('_')[-1])
         average_waiting_times[job_number] = sum(wts) / len(wts)
@@ -195,6 +196,7 @@ def find_waiting_times():
     df1.to_csv(analysis_dir + '/' + 'average_waiting_times.csv')
     df2 = pd.DataFrame(busy_times.items(), columns=['node_id', 'total_busy_time'])
     df2.to_csv(analysis_dir + '/' + 'total_busy_times.csv')
+
 
 def find_esr():
     hyperperiod = get_hyper_period()
@@ -211,4 +213,6 @@ def find_esr():
             # n_jobs_expected += find_n_expected_in_range(exp_start_time, exp_start_time + delta)
         exp_start_time += datetime.timedelta(minutes=hyperperiod)
 
+
 print(find_waiting_times())
+print(find_average_platform_delays())

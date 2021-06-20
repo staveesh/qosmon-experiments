@@ -1,13 +1,28 @@
 import json
+import os
 
-file_path = '/home/taveesh/Desktop/exp_dosd/phone_data.txt'
-job_exec_times = {"ping": [], "dns_lookup": [], "traceroute": [], "tcp_speed_test": []}
-lines = []
-with open(file_path, "r") as txtfile:
-    lines = txtfile.readlines()
-for line in lines[:-1]:
-    job = json.loads(line)
-    job_exec_times[job["parameters"]["type"]].append(job["executionTime"])
+TAGS = ['exp_edf', 'exp_dosd']
 
-for mmt, et in job_exec_times.items():
-    print(mmt, max(et))
+results = {
+    'ping': 1,
+    'dns_lookup': 6,
+    'traceroute': 12,
+    'http': 6,
+    'tcp_speed_test': 16
+}
+
+for tag in TAGS:
+    for json_file in os.listdir(tag+'_job_metrics'):
+        with open(tag+'_job_metrics/'+json_file, "r") as txtfile:
+            content = txtfile.readline()
+            metrics_dict = json.loads(content)
+            if 'executionTime' in metrics_dict:
+                et = metrics_dict['executionTime']
+                request_file_path = tag+'/'+json_file.split('-')[0]+'.json'
+                with open(request_file_path, 'r') as request_file:
+                    req_content = request_file.readline()
+                    request = json.loads(req_content)
+                    job_type = request['jobDescription']['measurementDescription']['type']
+                    results[job_type] = max(results[job_type], et)
+
+print(results)
