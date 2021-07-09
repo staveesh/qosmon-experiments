@@ -80,4 +80,4 @@ def repeat_with_data(data_dir):
             write_request_to_file(md['key'], schedule_request)
 
 
-schedule()
+repeat_with_data('jobs')

@@ -1,0 +1,1 @@
+{"_id": "exp_rr_job_2-5", "instanceNumber": 5, "jobKey": "exp_rr_job_2", "nodeId": "D2", "executionTime": 5782, "completionTime": {"$date": 1625826180671}, "addedToQueueAt": {"$date": 1625826123245}, "scheduleGeneratedAt": {"$date": 1625826123262}, "dispatchTime": {"$date": 1625826123257}, "_class": "com.taveeshsharma.requesthandler.dto.documents.JobMetrics"}

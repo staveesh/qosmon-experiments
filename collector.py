@@ -7,8 +7,7 @@ client = MongoClient('mongodb://root:root@localhost:27017/')
 db = client.qosmon
 collection = db.job_metrics
 
-ids = []
-TAG = "exp_dosd_job_metrics"
+TAG = "exp_rr_job_metrics"
 if not os.path.isdir(TAG):
     os.mkdir(TAG)
 os.chdir(TAG)
