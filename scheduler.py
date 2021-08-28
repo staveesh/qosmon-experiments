@@ -7,17 +7,16 @@ import dateutil.parser
 
 JOB_TYPES = ["tcp_speed_test"]
 
-NUM_JOBS = 20
 START_TIME_INTERVAL = (1, 5)
 JOB_PERIOD_INTERVAL = (5, 10)
 server_endpoint = "http://localhost:7800/schedule"
 
 
-def schedule(exp, destination, n_targets):
+def schedule(exp, destination, n_targets, n_jobs):
     EXP_START_TIME = datetime.datetime.utcnow()
     END_TIME = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
     TARGET_SERVERS = ["10.0.1."+str(i) for i in range(1, n_targets+1)]
-    for i in range(1, NUM_JOBS + 1):
+    for i in range(1, n_jobs + 1):
         minutes_ahead = random.randint(START_TIME_INTERVAL[0], START_TIME_INTERVAL[1])
         start_time = EXP_START_TIME + datetime.timedelta(minutes=minutes_ahead)
         job_key = '{}_job_{}'.format(exp, i)
@@ -80,4 +79,4 @@ def repeat_with_data(from_dir, output_dir, exp):
 
 
 if __name__ == '__main__':
-    schedule('test', os.getcwd(), 1)
+    schedule('test', os.getcwd(), 1, 20)
