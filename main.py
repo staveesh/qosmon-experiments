@@ -76,10 +76,8 @@ for n_devices in range(1, max_devices + 1):
         if not os.path.isdir(os.path.join(data_path, experiment_id)):
             os.mkdir(os.path.join(data_path, experiment_id))
         docker_client = docker.from_env()
-        topology_file = open('net.json')
-        topo = json.load(topology_file)
-        n_hosts = topo['nHosts']
-        n_targets = topo['nTargets']
+        n_hosts = n_devices
+        n_targets = 1
         try:
             idx = 0
             repeat = False
@@ -136,7 +134,7 @@ for n_devices in range(1, max_devices + 1):
                 print(r)
                 print('Attempting to connect to VirtualBox instance...')
                 print('Initiating python script....')
-                os.system("python /home/sdn/topology.py &")
+                os.system("nohup python2.7 /home/sdn/topology.py &")
                 sleep(30)
                 print("Scheduling jobs...")
                 if idx == 0:
@@ -172,11 +170,11 @@ for n_devices in range(1, max_devices + 1):
                 mongo_client = MongoClient('mongodb://root:root@localhost:27017/')
                 mongo_client.drop_database('qosmon')
                 print('Time to exit...')
-                print("pkill -f 'topology.py'")
+                print("sudo pkill -f 'topology.py'")
                 sleep(5)
-                os.system("pkill -f 'topology.py'")
+                os.system("sudo pkill -f 'topology.py'")
                 print("sudo mn -c")
-                os.system("mn -c")
+                os.system("sudo mn -c")
                 sleep(10)
                 command = "docker stop "
                 command += " ".join(["mn.t" + str(i) for i in range(1, n_targets + 1)])
