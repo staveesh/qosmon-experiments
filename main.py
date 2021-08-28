@@ -35,11 +35,11 @@ def generate_topology(num_hosts):
     result['delay'] = '10ms'
     result['bw'] = 10
     print(result)
-    with open('/home/taveesh/net.json', 'w+') as fp:
+    with open('/home/sdn/net.json', 'w+') as fp:
         json.dump(result, fp)
 
 
-data_path = '/home/taveesh/qosmon_data'
+data_path = '/home/sdn/qosmon_data'
 
 max_devices = 10
 max_jtd = 10
@@ -100,7 +100,7 @@ for n_devices in range(1, max_devices + 1):
                                                                                   'mode': 'ro'},
                                                                 '/etc/localtime': {'bind': '/etc/localtime',
                                                                                    'mode': 'ro'},
-                                                                '/home/taveesh/qosmon/influxdb': {
+                                                                '/home/sdn/qosmon/influxdb': {
                                                                     'bind': '/var/lib/influxdb',
                                                                     'mode': 'rw'}})
 
@@ -115,7 +115,7 @@ for n_devices in range(1, max_devices + 1):
                                                                                  'mode': 'ro'},
                                                                '/etc/localtime': {'bind': '/etc/localtime',
                                                                                   'mode': 'ro'},
-                                                               '/home/taveesh/qosmon/mongodb': {
+                                                               '/home/sdn/qosmon/mongodb': {
                                                                    'bind': '/data/db',
                                                                    'mode': 'rw'}})
             sleep(20)
@@ -133,7 +133,7 @@ for n_devices in range(1, max_devices + 1):
             print(r)
             print('Attempting to connect to VirtualBox instance...')
             print('Initiating python script....')
-            os.system("nohup python2.7 /home/taveesh/topology.py &")
+            os.system("nohup python2.7 /home/sdn/topology.py &")
             sleep(30)
             print("Scheduling jobs...")
             if idx == 0:
