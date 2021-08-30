@@ -1,0 +1,1 @@
+{"nSwitches": 2, "nHosts": 1, "nTargets": 1, "links": [{"node": "s1", "neighbors": ["h1", "s2"]}, {"node": "s2", "neighbors": ["t1", "s1"]}], "delay": "10ms", "bandwidth": 10}

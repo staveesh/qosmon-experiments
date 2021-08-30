@@ -36,7 +36,7 @@ def generate_topology(num_hosts):
     result['delay'] = '10ms'
     result['bandwidth'] = 10
     print(result)
-    with open('net.json', 'w+') as fp:
+    with open('topos/topo-{}.json'.format(num_hosts), 'w+') as fp:
         json.dump(result, fp)
 
 
@@ -261,3 +261,7 @@ for n_devices in range(1, max_devices + 1):
         #     r = requests.get(controller_address + '/end')
         #     print(r)
         #     sys.exit()
+
+if __name__ == '__main__':
+    for n in range(1, max_devices+1):
+        generate_topology(n)
