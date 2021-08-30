@@ -41,12 +41,12 @@ def generate_topology(num_hosts):
         json.dump(result, fp)
 
 
-data_path = '/home/taveesh/qosmon_data'
+data_path = 'qosmon_data'
 if not os.path.isdir(data_path):
     util.create_dir(data_path)
 
-if not os.path.isdir('/home/taveesh/qosmon'):
-    util.create_dir('/home/taveesh/qosmon')
+if not os.path.isdir('qosmon'):
+    util.create_dir('qosmon')
 
 max_devices = 10
 max_jtd = 10
