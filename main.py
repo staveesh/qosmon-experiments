@@ -10,6 +10,7 @@ from pymongo import MongoClient
 from influxdb import InfluxDBClient
 import pandas as pd
 import json
+import util
 
 
 def generate_topology(num_hosts):
@@ -42,10 +43,10 @@ def generate_topology(num_hosts):
 
 data_path = '/home/taveesh/qosmon_data'
 if not os.path.isdir(data_path):
-    os.mkdir(data_path)
+    util.create_dir(data_path)
 
 if not os.path.isdir('/home/taveesh/qosmon'):
-    os.mkdir('/home/taveesh/qosmon')
+    util.create_dir('/home/taveesh/qosmon')
 
 max_devices = 10
 max_jtd = 10
@@ -84,7 +85,7 @@ def go():
         for jtd in range(1, max_jtd + 1):
             experiment_id = 'experiment_{}_{}'.format(n_devices, jtd)
             if not os.path.isdir(os.path.join(data_path, experiment_id)):
-                os.mkdir(os.path.join(data_path, experiment_id))
+                util.create_dir(os.path.join(data_path, experiment_id))
             docker_client = docker.from_env()
             n_hosts = n_devices
             n_targets = 1
@@ -94,7 +95,7 @@ def go():
             for algorithm in algorithms:
                 # Server side
                 print('#' * 40)
-                print('Running {} on measurement server...'.format(algorithm.upper()))
+                print('Configuration : n_devices = {} jtd = {} algo = {}'.format(n_devices, jtd, algorithm.upper()))
                 env_vars['SCHEDULING_ALGO_NAME'] = algorithm
                 backend = docker_client.networks.create('backend', driver='bridge')
                 influx_container = docker_client.containers.run("influxdb:1.8", detach=True, name='influxdb',

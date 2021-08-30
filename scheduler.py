@@ -4,6 +4,7 @@ import random
 import json
 import os
 import dateutil.parser
+import util
 
 JOB_TYPES = ["tcp_speed_test"]
 
@@ -54,7 +55,7 @@ def schedule(exp, destination, n_targets, n_jobs):
 
 def write_request_to_file(job_key, schedule_request, output_dir, exp):
     if not os.path.isdir(os.path.join(output_dir, exp)):
-        os.mkdir(os.path.join(output_dir, exp))
+        util.create_dir(os.path.join(output_dir, exp))
     with open(os.path.join(output_dir, exp, job_key) + ".json", "w+") as json_file:
         json_file.write(json.dumps(schedule_request))
 

@@ -5,13 +5,14 @@ import json
 from math import gcd
 import datetime
 import matplotlib.pyplot as plt
+import util
 
 TAG = 'exp_aosd'
 analysis_dir = TAG + "_analysis"
 metrics_dir = TAG + '_job_metrics'
 
 if not os.path.isdir(analysis_dir):
-    os.mkdir(analysis_dir)
+    util.create_dir(analysis_dir)
 
 job_request_dict = {}
 job_metrics_dict = {}

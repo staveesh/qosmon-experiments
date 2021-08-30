@@ -5,6 +5,7 @@ import random
 import dateutil.parser
 import matplotlib
 import matplotlib.pyplot as plt
+import util
 import pandas as pd
 
 font = {'family': 'normal',
@@ -59,7 +60,7 @@ data_dir = '/home/taveesh/Desktop/qosmon_data/zero_job_misses_attempt'
 csv_dir = '/home/taveesh/Desktop/qosmon_data/zero_job_misses_attempt/csv'
 
 if not os.path.isdir(csv_dir):
-    os.mkdir(csv_dir)
+    util.create_dir(csv_dir)
 
 for algorithm in algorithms:
     nodes_map = {'D' + str(i): 'D' + str(i) for i in range(1, 5)}
