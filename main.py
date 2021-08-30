@@ -159,7 +159,8 @@ def go():
                 sleep(10)
                 sftp.close()
                 print('Initiating python script....')
-                stdin, stdout, stderr = session.exec_command("sudo -S -p '' python topology.py ")
+                stdin, stdout, stderr = session.exec_command(
+                    "sudo -S -p '' python topology.py {}".format('topo-{}.json'.format(n_devices)))
                 stdin.write(containernet['password'] + '\n')
                 stdin.flush()
                 sleep(30)
