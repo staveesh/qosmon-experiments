@@ -165,7 +165,6 @@ for i, algorithm in enumerate(algorithms):
 success_data = []
 platform_data = []
 wt_data = []
-ext_data = []
 for algorithm in dataset:
     for job in dataset[algorithm]:
         success_data.append((
