@@ -1,0 +1,20 @@
+set terminal pdf enhanced
+set output 'waiting.pdf'
+
+set key outside
+set key right top
+
+set style data histogram
+set style histogram cluster gap 1
+
+set ylabel "Average Waiting Time (min)"
+set xlabel "Number of Hosts"
+
+set style fill solid border rgb "black"
+set auto x
+set yrange [0:*]
+plot 'waiting.dat' using 2:xtic(1) title col, \
+        '' using 3:xtic(1) title col, \
+        '' using 4:xtic(1) title col, \
+        '' using 5:xtic(1) title col, \
+        '' using 6:xtic(1) title col
