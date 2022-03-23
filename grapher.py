@@ -56,8 +56,8 @@ algorithms = ['rr', 'edf', 'dosd', 'aosd']
 dataset = {}
 nbtr = {}
 costs = {}
-data_dir = '/home/taveesh/Desktop/qosmon_data/zero_job_misses_attempt'
-csv_dir = '/home/taveesh/Desktop/qosmon_data/zero_job_misses_attempt/csv'
+data_dir = '/home/taveesh/Desktop/phase2_final/zero_job_misses_attempt'
+csv_dir = '/home/taveesh/Desktop/phase2_final/zero_job_misses_attempt/csv'
 
 if not os.path.isdir(csv_dir):
     util.create_dir(csv_dir)

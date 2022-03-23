@@ -45,7 +45,7 @@ def generate_topology(num_hosts):
         json.dump(result, fp)
 
 
-data_path = 'qosmon_data'
+data_path = 'phase2_final'
 if not os.path.isdir(data_path):
     util.create_dir(data_path)
 
