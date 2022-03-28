@@ -16,7 +16,7 @@ warnings.simplefilter(action="ignore", category=FutureWarning)
 plt.style.use('classic')
 
 baseline_speed = 10000
-hosts = range(3, 11)
+hosts = range(3, 16)
 algos = ['random', 'rr', 'edf', 'dosd', 'aosd']
 
 data_dir = os.path.join(os.getcwd(), 'phase2_final')
